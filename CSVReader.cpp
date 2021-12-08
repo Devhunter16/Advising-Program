@@ -8,11 +8,12 @@ using namespace std;
 
 // This is the course object which stores all of the course information
 struct Course {
-	string courseNumber;
+	string courseID;
 	string courseName;
+	string courseNum;
 	vector<string> prereqs;
 	Course() {
-		courseNumber = -1;
+		courseID = -1;
 		courseName = "";
 	}
 };
@@ -58,11 +59,13 @@ inline void CSVReader::readAndParse() {
 
 		// Now I create a new course and fill in the new course's course number and course name from the vector
 		Course newCourse;
-		newCourse.courseNumber = row.at(0);
+		newCourse.courseID = row.at(0);
 		newCourse.courseName = row.at(1);
+		newCourse.courseNum = row.at(0).erase(0, 4);
 
-		cout << newCourse.courseNumber << endl;
-		cout << newCourse.courseName << endl;
+		//cout << newCourse.courseID << endl;
+		//cout << newCourse.courseName << endl;
+		//cout << newCourse.courseNum << endl;
 
 		// These if statements add the prereqs for the new course to that course's prereqs vector
 		if (numPrereqs == 1) {
@@ -73,9 +76,12 @@ inline void CSVReader::readAndParse() {
 		}
 
 		// This is just so I know I'm reading lines and storing them properly
-		for (int i = 0; i < newCourse.prereqs.size(); i++) {
-			cout << newCourse.prereqs.at(i) << endl;
-		}
+		//for (int i = 0; i < newCourse.prereqs.size(); i++) {
+			//cout << newCourse.prereqs.at(i) << endl;
+		//}
+
+		// Add the new course to the courses vector
+		//courses.push_back(newCourse);
 
 		cout << endl;
 
